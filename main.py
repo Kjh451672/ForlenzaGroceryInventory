@@ -31,7 +31,8 @@ def update_quantity(inventory, item_name, new_quantity):
     item_name (str): The name of the item to update
     new_quantity (str): The new quantity of the item
     """
-    inventory[item_name]["quantity"] == new_quantity
+    #Removed == sign with = sign
+    inventory[item_name]["quantity"] = new_quantity
     print(f"{item_name} quantity updated to {new_quantity}.")
 
 def display_inventory(inventory):
@@ -56,21 +57,33 @@ inventory = {
 }
 
 while True:
+    display_inventory(inventory)
     print("\n1. Add item\n2. Remove item\n3. Update quantity\n4. Display inventory\n5. Exit")
     choice = input("Enter your choice (1-5): ")
-
+#Added display_inventory(inventory) at top of while loop
     if choice == "1":
         name = input("Enter item name: ")
+        if name in inventory:
+            #No longer overwrites existing items
+            print("That item is already in stock.")
+            continue
         price = input("Enter item price: ")
         quantity = int(input("Enter item quantity: "))
         add_item(inventory, name, price, quantity)
+
     elif choice == "2":
         name = input("Enter item name to remove: ")
-        remove_item(inventory, name)
+        if name in inventory:
+            remove_item(inventory, name)
+            #Accounts for when an item is sold out
+        else:
+            print("Sorry, that item is sold out.")
+        
     elif choice == "3":
         name = input("Enter item name to update: ")
         quantity = input("Enter new quantity: ")
         update_quantity(inventory, name, quantity)
+
     elif choice == "4":
         display_inventory(inventory)
     elif choice == "5":

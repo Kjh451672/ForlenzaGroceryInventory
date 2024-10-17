@@ -14,4 +14,10 @@
   - View the current inventory.
   - Search for items by name.
 
-
+## Version 1.2
+- 2024-10-17
+- Fixed bugs identified by users and added features to improve productivity
+- Features:
+  - Quantity update now functional.
+  - Inventory doesnt overwrite existing stock
+  - Accounts for items out of stock/sold out
