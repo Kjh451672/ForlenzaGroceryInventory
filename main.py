@@ -67,12 +67,17 @@ while True:
             #No longer overwrites existing items
             print("That item is already in stock.")
             continue
-        price = input("Enter item price: ")
+        price = float(input("Enter item price: "))
         quantity = int(input("Enter item quantity: "))
         add_item(inventory, name, price, quantity)
 
     elif choice == "2":
+        #Accounts for when inventory is empty
+        if len(inventory) == 0:
+            print("Inventory is empty. There is nothing to remove.")
+            continue
         name = input("Enter item name to remove: ")
+
         if name in inventory:
             remove_item(inventory, name)
             #Accounts for when an item is sold out

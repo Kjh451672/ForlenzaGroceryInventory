@@ -21,3 +21,9 @@
   - Quantity update now functional.
   - Inventory doesnt overwrite existing stock
   - Accounts for items out of stock/sold out
+
+## Version 1.3
+- 2024-10-18
+- Fixed remaining bugs encountered by users 
+    - List now displays after every action
+    - Removing from empty inventory no longer crashes
